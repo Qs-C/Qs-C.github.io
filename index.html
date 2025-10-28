@@ -176,7 +176,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2025%20TSCTF-J%20wp/" class="post-title-link" itemprop="url">未命名</a>
+          <a href="/2025%20TSCTF-J%20wp/" class="post-title-link" itemprop="url">2025 TSCTF-J WP</a>
         </h2>
 
         <div class="post-meta-container">
@@ -188,7 +188,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-10-28 20:26:03 / 修改时间：20:53:49" itemprop="dateCreated datePublished" datetime="2025-10-28T20:26:03+08:00">2025-10-28</time>
+      <time title="创建时间：2025-10-28 20:26:03 / 修改时间：21:00:52" itemprop="dateCreated datePublished" datetime="2025-10-28T20:26:03+08:00">2025-10-28</time>
     </span>
 
   
@@ -201,8 +201,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="2025-TSCTF-J-WP"><a href="#2025-TSCTF-J-WP" class="headerlink" title="2025 TSCTF-J WP"></a>2025 TSCTF-J WP</h1><hr>
-<h2 id="tags-CTF-date-2025-10-28"><a href="#tags-CTF-date-2025-10-28" class="headerlink" title="tags: [CTF]date: 2025-10-28 "></a>tags: [CTF]<br>date: 2025-10-28 </h2><h2 id="AI"><a href="#AI" class="headerlink" title="AI:"></a>AI:</h2><h3 id="Coup"><a href="#Coup" class="headerlink" title="Coup"></a>Coup</h3><p>给出前中后期策略，然后开roll<br>策略：前期苟，中期挑软柿子打，后期有把握就开<br>原文：Early on, prioritize safe income generation or using the Duke’s Tax for economy, while avoiding unnecessary bluffs. As funds reach 7-9, leverage Coups or Assassinations to target the weakest opponent , accelerating the game to a one-on-one scenario. Maintain resource control to avoid forced Coups at 10, and use challenges sparingly based on opponent patterns—challenge only when bluff probability is high. In late game, concentrate attacks on the remaining player, balancing aggression with survival; for instance, bluff cautiously in head-to-head situations due to higher challenge risks.</p>
+          <h2 id="tags-CTF-date-2025-10-28"><a href="#tags-CTF-date-2025-10-28" class="headerlink" title="tags: [CTF]date: 2025-10-28 "></a>tags: [CTF]<br>date: 2025-10-28 </h2><h2 id="AI"><a href="#AI" class="headerlink" title="AI:"></a>AI:</h2><h3 id="Coup"><a href="#Coup" class="headerlink" title="Coup"></a>Coup</h3><p>给出前中后期策略，然后开roll<br>策略：前期苟，中期挑软柿子打，后期有把握就开<br>原文：Early on, prioritize safe income generation or using the Duke’s Tax for economy, while avoiding unnecessary bluffs. As funds reach 7-9, leverage Coups or Assassinations to target the weakest opponent , accelerating the game to a one-on-one scenario. Maintain resource control to avoid forced Coups at 10, and use challenges sparingly based on opponent patterns—challenge only when bluff probability is high. In late game, concentrate attacks on the remaining player, balancing aggression with survival; for instance, bluff cautiously in head-to-head situations due to higher challenge risks.</p>
 <h3 id="ThreeFairy-Tales"><a href="#ThreeFairy-Tales" class="headerlink" title="ThreeFairy Tales"></a>ThreeFairy Tales</h3><p>误打误撞，反提示操作，将执剑人temperature拉到70，将情报变成每个字藏在每句话第二个字的一段话，结果ai把输入的话又输出了，通过</p>
 <hr>
 <h2 id="Crypto："><a href="#Crypto：" class="headerlink" title="Crypto："></a>Crypto：</h2><h3 id="Cantor’s-gift"><a href="#Cantor’s-gift" class="headerlink" title="Cantor’s_gift"></a>Cantor’s_gift</h3><p>康托展开数，逐除（n-1-i）！得到打乱序列，还原字符串<br>数字符串长度得到n&#x3D;37<br>初始化<br>factorials&#x3D;[1]<em>n<br>    if n&gt;1:<br>        temp_fact&#x3D;1<br>        for i in range(1,n):<br>            temp_fact</em>&#x3D;i<br>            factorials[i]&#x3D;temp_fact<br>    avail&#x3D;list(range(1,n+1))<br>perm&#x3D;[]<br>X&#x3D;cantor_num<br>还原康托展开，还原随机排序<br>for i in range(n):<br>        fact_val&#x3D;factorials[n-1-i]<br>        index&#x3D;X&#x2F;&#x2F;fact_val<br>        X&#x3D;X%fact_val<br>        element&#x3D;avail.pop(index)<br>        perm.append(element)<br>排序反向，还原字符串<br>inverse_perm&#x3D;[0]*len(perm)<br>for pos,val in enumerate(perm):inverse_perm[val-1]&#x3D;pos+1&#x2F;&#x2F;反向<br>Flag&#x3D;bytearray(len(hint2))<br>    for i in range(len(hint2)):<br>        Flag[i]&#x3D;hint2[inverse_perm[i]-1]</p>
