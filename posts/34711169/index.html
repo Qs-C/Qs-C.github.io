@@ -27,7 +27,7 @@
 <meta property="og:description" content="计导课上无聊，看了二分匹配相关的内容，遂记录  二分图如果一个图的顶点可以分为两个集合，图的所有边的两个顶点分属两个集合，则该图为“二分图” (Bipartite Graph)">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-10-30T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-10-31T02:54:31.897Z">
+<meta property="article:modified_time" content="2025-10-31T02:57:14.682Z">
 <meta property="article:author" content="qsc">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
@@ -255,7 +255,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-10-31 00:00:00 / 修改时间：10:54:31" itemprop="dateCreated datePublished" datetime="2025-10-31T00:00:00+08:00">2025-10-31</time>
+      <time title="创建时间：2025-10-31 00:00:00 / 修改时间：10:57:14" itemprop="dateCreated datePublished" datetime="2025-10-31T00:00:00+08:00">2025-10-31</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -281,7 +281,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.5k</span>
+      <span>1.4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -303,7 +303,33 @@
 </blockquote>
 <h1 id="二分图"><a href="#二分图" class="headerlink" title="二分图"></a>二分图</h1><p>如果一个图的顶点可以分为两个集合，图的所有边的两个顶点分属两个集合，则该图为“二分图” (Bipartite Graph)</p>
 <h1 id="二分图的最大匹配"><a href="#二分图的最大匹配" class="headerlink" title="二分图的最大匹配"></a>二分图的最大匹配</h1><p>匹配：在图论中，一个“匹配”（matching）是一个边的集合，其中任意两条边都没有公共顶点<br>一个图所有匹配中，所含匹配边数最多的匹配，称为这个图的最大匹配。二分图的应用中，求最大匹配数是最常见的，其他的很多问题都可以转化为求最大匹配数（如最小覆盖数）</p>
-<h1 id="DFS实现匈牙利算法伪代码"><a href="#DFS实现匈牙利算法伪代码" class="headerlink" title="DFS实现匈牙利算法伪代码"></a>DFS实现匈牙利算法伪代码</h1><p>从一侧点出发，通过相连的线段到达未与其他点匹配的另一侧点，最大匹配数即为符合上述要求的点的个数通过dfs算法实现，从左侧点出发，尝试连接右侧点<br>    int hungary(){<br>        int res&#x3D;0;&#x2F;&#x2F;res初始化，用来记录匹配最大匹配数<br>        memset(linker,-1,sizeof(linker));&#x2F;&#x2F;linker[]用来记录目前右边点的连接情况<br>        for(int l&#x3D;0;l &lt; lN;l++)<br>        {<br>            memset(used,0,sizeof(used));&#x2F;&#x2F;对于该点，初始时未开始与左侧各点连接<br>            if(dfs(u))res++;&#x2F;&#x2F;通过dfs判定上述要求能否成功<br>        }&#x2F;&#x2F;lN为左侧点的个数，l为正在尝试连接的点的序号<br>        return res;&#x2F;&#x2F;返回最大匹配数<br>    }<br>    bool dfs(int l){<br>        for(int r&#x3D;0;r &lt; rN;r++){<br>            if(g[l][r] &amp;&amp; !used[r]){<br>                used[r]&#x3D;1;<br>                if(linker[r]&#x3D;&#x3D;-1 || dfs(linker[r])){<br>                    linker[r]&#x3D;u;<br>                    return 1;<br>                }<br>            }<br>        }<br>        return 0;<br>        &#x2F;<em>r为右边点序号，rN为右边点个数，g[][]记录左右两侧点的连接情况<br>        对于未被尝试连接过的点，如果该点未与其他点连接则直接相连(linker[r]&#x3D;&#x3D;-1)，将右侧点的连接对象标记为该点<br>        若已有左侧点p与其相连，先将该右侧点标记为不可再连，再去考虑点p能否与其他点相连(dfs(linker[r]))，以此类推，最后找到一个左侧点与右侧未与其他相连的点连接，则返回真，匹配数加一，否则匹配数不变</em>&#x2F;<br>    }</p>
+<h1 id="DFS实现匈牙利算法伪代码"><a href="#DFS实现匈牙利算法伪代码" class="headerlink" title="DFS实现匈牙利算法伪代码"></a>DFS实现匈牙利算法伪代码</h1><p>从一侧点出发，通过相连的线段到达未与其他点匹配的另一侧点，最大匹配数即为符合上述要求的点的个数通过dfs算法实现，从左侧点出发，尝试连接右侧点</p>
+<pre><code>int hungary()&#123;
+    int res=0;//res初始化，用来记录匹配最大匹配数
+    memset(linker,-1,sizeof(linker));//linker[]用来记录目前右边点的连接情况
+    for(int l=0;l &lt; lN;l++)
+    &#123;
+        memset(used,0,sizeof(used));//对于该点，初始时未开始与左侧各点连接
+        if(dfs(u))res++;//通过dfs判定上述要求能否成功
+    &#125;//lN为左侧点的个数，l为正在尝试连接的点的序号
+    return res;//返回最大匹配数
+&#125;
+bool dfs(int l)&#123;
+    for(int r=0;r &lt; rN;r++)&#123;
+        if(g[l][r] &amp;&amp; !used[r])&#123;
+            used[r]=1;
+            if(linker[r]==-1 || dfs(linker[r]))&#123;
+                linker[r]=u;
+                return 1;
+            &#125;
+        &#125;
+    &#125;
+    return 0;
+    /*r为右边点序号，rN为右边点个数，g[][]记录左右两侧点的连接情况
+    对于未被尝试连接过的点，如果该点未与其他点连接则直接相连(linker[r]==-1)，将右侧点的连接对象标记为该点
+    若已有左侧点p与其相连，先将该右侧点标记为不可再连，再去考虑点p能否与其他点相连(dfs(linker[r]))，以此类推，最后找到一个左侧点与右侧未与其他相连的点连接，则返回真，匹配数加一，否则匹配数不变*/
+&#125;
+</code></pre>
 <h1 id="二分图匹配匈牙利算法dfs实现的优劣"><a href="#二分图匹配匈牙利算法dfs实现的优劣" class="headerlink" title="二分图匹配匈牙利算法dfs实现的优劣"></a>二分图匹配匈牙利算法dfs实现的优劣</h1><p>优点：</p>
 <ul>
 <li>算法的邻接矩阵适用于稠密矩阵</li>
