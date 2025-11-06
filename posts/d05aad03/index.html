@@ -19,28 +19,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.25.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"foundation","dark":"foundation"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="AI:Coup给出前中后期策略，然后开roll策略：前期苟，中期挑软柿子打，后期有把握就开原文：Early on, prioritize safe income generation or using the Duke’s Tax for economy, while avoiding unnecessary bluffs. As funds reach 7-9, leverage Coups o">
+    <meta name="description" content="函数传参函数调用约定_cdecl：c&#x2F;c++默认方式，参数从右入左，主调函数负责栈平衡_stdcall：windows API默认方式，参数从右向左入栈，被调函数负责栈平衡_fastcall：快速调用。参数优先从寄存器存入（ECX和EDX），剩下的参数再从右向左从栈传入。存取方式快于内存">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2025 TSCTF-J WP">
-<meta property="og:url" content="http://example.com/posts/4c9af485/">
+<meta property="og:title" content="pwn学习记录（其二）">
+<meta property="og:url" content="http://example.com/posts/d05aad03/">
 <meta property="og:site_name" content="qsc">
-<meta property="og:description" content="AI:Coup给出前中后期策略，然后开roll策略：前期苟，中期挑软柿子打，后期有把握就开原文：Early on, prioritize safe income generation or using the Duke’s Tax for economy, while avoiding unnecessary bluffs. As funds reach 7-9, leverage Coups o">
+<meta property="og:description" content="函数传参函数调用约定_cdecl：c&#x2F;c++默认方式，参数从右入左，主调函数负责栈平衡_stdcall：windows API默认方式，参数从右向左入栈，被调函数负责栈平衡_fastcall：快速调用。参数优先从寄存器存入（ECX和EDX），剩下的参数再从右向左从栈传入。存取方式快于内存">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-10-27T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-11-01T00:55:19.291Z">
+<meta property="article:published_time" content="2025-11-04T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-11-06T12:36:57.109Z">
 <meta property="article:author" content="qsc">
 <meta property="article:tag" content="CTF">
-<meta property="article:tag" content="wp">
+<meta property="article:tag" content="pwn">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/posts/4c9af485/">
+<link rel="canonical" href="http://example.com/posts/d05aad03/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/4c9af485/","path":"posts/4c9af485/","title":"2025 TSCTF-J WP"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/d05aad03/","path":"posts/d05aad03/","title":"pwn学习记录（其二）"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>2025 TSCTF-J WP | qsc</title>
+<title>pwn学习记录（其二） | qsc</title>
   
 
 
@@ -160,7 +160,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#AI"><span class="nav-number">1.</span> <span class="nav-text">AI:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Coup"><span class="nav-number">1.1.</span> <span class="nav-text">Coup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ThreeFairy-Tales"><span class="nav-number">1.2.</span> <span class="nav-text">ThreeFairy Tales</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Crypto%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">Crypto：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Cantor%E2%80%99s-gift"><span class="nav-number">2.1.</span> <span class="nav-text">Cantor’s_gift</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sign-in"><span class="nav-number">2.2.</span> <span class="nav-text">sign_in</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#p-q"><span class="nav-number">2.3.</span> <span class="nav-text">p&#x3D;~q</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8E%E7%8B%90%E7%A6%85"><span class="nav-number">2.4.</span> <span class="nav-text">野狐禅</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#misc"><span class="nav-number">3.</span> <span class="nav-text">misc</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BadFile"><span class="nav-number">3.1.</span> <span class="nav-text">BadFile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Meow"><span class="nav-number">3.2.</span> <span class="nav-text">Meow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%A2%E6%A3%AE%E5%A0%A1%E7%9A%84%E7%A7%98%E5%AF%86"><span class="nav-number">3.3.</span> <span class="nav-text">卢森堡的秘密</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pwn"><span class="nav-number">4.</span> <span class="nav-text">Pwn</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Ret"><span class="nav-number">4.1.</span> <span class="nav-text">Ret</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web"><span class="nav-number">5.</span> <span class="nav-text">Web</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Druid"><span class="nav-number">5.1.</span> <span class="nav-text">Druid</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EZ-login"><span class="nav-number">5.2.</span> <span class="nav-text">EZ_login</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EZ-SQL"><span class="nav-number">5.3.</span> <span class="nav-text">EZ_SQL</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E4%BC%A0%E5%8F%82"><span class="nav-number">1.</span> <span class="nav-text">函数传参</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A"><span class="nav-number">1.1.</span> <span class="nav-text">函数调用约定</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cdecl-c%E8%AF%AD%E8%A8%80%E8%B0%83%E7%94%A8%E6%A0%88"><span class="nav-number">2.</span> <span class="nav-text">_cdecl:c语言调用栈</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ret2text64%E4%BD%8D%E4%BC%A0%E5%8F%82ROP%E5%9F%BA%E7%A1%80"><span class="nav-number">3.</span> <span class="nav-text">ret2text64位传参ROP基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E9%9B%86%E6%8B%86%E5%88%86"><span class="nav-number">3.1.</span> <span class="nav-text">指令集拆分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ROPgadget"><span class="nav-number">3.2.</span> <span class="nav-text">ROPgadget</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ret2text%E8%BF%9B%E9%98%B6"><span class="nav-number">4.</span> <span class="nav-text">ret2text进阶</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -225,7 +225,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/posts/4c9af485/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/d05aad03/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/qsc.jpg">
@@ -238,12 +238,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="2025 TSCTF-J WP | qsc">
+      <meta itemprop="name" content="pwn学习记录（其二） | qsc">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          2025 TSCTF-J WP
+          pwn学习记录（其二）
         </h1>
 
         <div class="post-meta-container">
@@ -255,14 +255,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2025-10-28 00:00:00" itemprop="dateCreated datePublished" datetime="2025-10-28T00:00:00+08:00">2025-10-28</time>
+      <time title="创建时间：2025-11-05 00:00:00" itemprop="dateCreated datePublished" datetime="2025-11-05T00:00:00+08:00">2025-11-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-11-01 08:55:19" itemprop="dateModified" datetime="2025-11-01T08:55:19+08:00">2025-11-01</time>
+      <time title="修改时间：2025-11-06 20:36:57" itemprop="dateModified" datetime="2025-11-06T20:36:57+08:00">2025-11-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -270,7 +270,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/wp/" itemprop="url" rel="index"><span itemprop="name">wp</span></a>
+          <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
         </span>
     </span>
 
@@ -288,14 +288,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.9k</span>
+      <span>632</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>5 分钟</span>
+      <span>1 分钟</span>
     </span>
 </div>
 
@@ -305,102 +305,37 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="AI"><a href="#AI" class="headerlink" title="AI:"></a>AI:</h2><h3 id="Coup"><a href="#Coup" class="headerlink" title="Coup"></a>Coup</h3><p>给出前中后期策略，然后开roll<br>策略：前期苟，中期挑软柿子打，后期有把握就开<br>原文：Early on, prioritize safe income generation or using the Duke’s Tax for economy, while avoiding unnecessary bluffs. As funds reach 7-9, leverage Coups or Assassinations to target the weakest opponent , accelerating the game to a one-on-one scenario. Maintain resource control to avoid forced Coups at 10, and use challenges sparingly based on opponent patterns—challenge only when bluff probability is high. In late game, concentrate attacks on the remaining player, balancing aggression with survival; for instance, bluff cautiously in head-to-head situations due to higher challenge risks.</p>
-<h3 id="ThreeFairy-Tales"><a href="#ThreeFairy-Tales" class="headerlink" title="ThreeFairy Tales"></a>ThreeFairy Tales</h3><p>误打误撞，反提示操作，将执剑人temperature拉到70，将情报变成每个字藏在每句话第二个字的一段话，结果ai把输入的话又输出了，通过</p>
-<hr>
-<h2 id="Crypto："><a href="#Crypto：" class="headerlink" title="Crypto："></a>Crypto：</h2><h3 id="Cantor’s-gift"><a href="#Cantor’s-gift" class="headerlink" title="Cantor’s_gift"></a>Cantor’s_gift</h3><p>康托展开数，逐除（n-1-i）！得到打乱序列，还原字符串<br>数字符串长度得到n&#x3D;37<br>初始化</p>
-<pre><code>factorials=[1]*n
-    if n&gt;1:
-        temp_fact=1
-        for i in range(1,n):
-            temp_fact*=i
-            factorials[i]=temp_fact
-    avail=list(range(1,n+1))
-perm=[]
-X=cantor_num
+    <div class="post-body" itemprop="articleBody"><h1 id="函数传参"><a href="#函数传参" class="headerlink" title="函数传参"></a>函数传参</h1><h2 id="函数调用约定"><a href="#函数调用约定" class="headerlink" title="函数调用约定"></a>函数调用约定</h2><p><strong>_cdecl</strong>：c&#x2F;c++默认方式，参数从右入左，主调函数负责栈平衡<br>_stdcall：windows API默认方式，参数从右向左入栈，被调函数负责栈平衡<br>_fastcall：快速调用。参数优先从寄存器存入（ECX和EDX），剩下的参数再从右向左从栈传入。存取方式快于内存</p>
+<h1 id="cdecl-c语言调用栈"><a href="#cdecl-c语言调用栈" class="headerlink" title="_cdecl:c语言调用栈"></a>_cdecl:c语言调用栈</h1><ul>
+<li>x86<ul>
+<li>用栈来传递函数</li>
+<li>使用eax存放返回值</li>
+</ul>
+</li>
+<li>amd64<ul>
+<li>前六个参数依次存放于rdi，rsi，rdx，rcx，r8，r9寄存器中</li>
+<li>第七个以后的参数存放于栈中</li>
+</ul>
+</li>
+</ul>
+<h1 id="ret2text64位传参ROP基础"><a href="#ret2text64位传参ROP基础" class="headerlink" title="ret2text64位传参ROP基础"></a>ret2text64位传参ROP基础</h1><p>如果程序中没有存在代码：</p>
+<pre><code>mov eax,0xb
+mov ebx,[&quot;/bin.sh&quot;]
+mov ecx,0
+mov edx,0
+int 0x80
+//即为execve(&quot;bin/sh&quot;,NULL,NULL)
 </code></pre>
-<p>还原康托展开，还原随机排序<br>    for i in range(n):<br>        fact_val&#x3D;factorials[n-1-i]<br>        index&#x3D;X&#x2F;&#x2F;fact_val<br>        X&#x3D;X%fact_val<br>        element&#x3D;avail.pop(index)<br>        perm.append(element)</p>
-<p>排序反向，还原字符串</p>
-<pre><code>inverse_perm=[0]*len(perm)
-for pos,val in enumerate(perm):inverse_perm[val-1]=pos+1//反向
-Flag=bytearray(len(hint2))
-    for i in range(len(hint2)):
-        Flag[i]=hint2[inverse_perm[i]-1]
-</code></pre>
-<h3 id="sign-in"><a href="#sign-in" class="headerlink" title="sign_in"></a>sign_in</h3><p>异或回去，恢复flag base64解码<br>将字符串转成整型</p>
-<pre><code>key1=int(KEY1,16)
-key2_xor_key1=int(KEY2_XOR_KEY1,16)
-key2_xor_key3=int(KEY2_XOR_KEY3,16)
-flag_xor_all=int(FLAG_XOR_ALL,16)
-</code></pre>
-<p>异或回去</p>
-<pre><code>Key2=key2_xor_key1^key1
-key3=key2^key2_xor_key3
-m=flag_xor_all^key1^key2^key3
-</code></pre>
-<p>转回字符串</p>
-<pre><code>hex_str=hex(m)[2:]
-flag_byte=bytes.fromhex(hex_str)
-flag=base64.b64decode(flag_bytes).decode(&#39;utf-8&#39;)
-</code></pre>
-<h3 id="p-q"><a href="#p-q" class="headerlink" title="p&#x3D;~q"></a>p&#x3D;~q</h3><pre><code>p，q类似取反，q+p=3*2**1023
-设：p=2^(1023)+a*2+1
-q=2^(1023)+ b*2 1   
-b=(2^1022-1)-a
-</code></pre>
-<p>带入n解方程得到p，q</p>
-<pre><code>s=3*(1&lt;&lt;1023)
-D=s*s-4*n
-sqrt_D=math.isqrt(D)
-p=(s+sqrt_D)//2
-q=(S-sqrt_D)//2
-计算私钥，d=pow(e,-1,(p-1)(q-1))
-phi=(p-1)*(q-1)
-d=pow(e,-1,phi)
-解密m=pow(c,d,n)
-m=pow(c,d,n)
-flag=long_to_bytes(m)
-</code></pre>
-<h3 id="野狐禅"><a href="#野狐禅" class="headerlink" title="野狐禅"></a>野狐禅</h3><p>Paillier加密<br>还原计算得到y</p>
-<pre><code>y_vals=[]
-for i in range(150):
-    c_i=ciphertexts[i]
-raw_i=lcg_raws[i]
-r_i=raw_i%n
-    t_i=pow(r_i,n,n2)
-    inv_t_i=pow(t_i,-1,n2)
-    z_i=(c_i*inv_t_i)%n2
-    m_val_i=(z_i-1)//n
-    y_vals.append(m_val_i)
-</code></pre>
-<p>构建线性关系求解</p>
-<pre><code>b=y_vals[k:2*k]
-A =[]
-    for i in range(k):
-row=[]
-        for j in range(k):
-index=k+i-1-j
-        row.append(y_vals[index])
-    A.append(row)
-A_matrix=Matrix(A)
-b_vector=Matrix(b）
-c_vector=A_matrix.solve(b_vector)
-coeffs=[int(c)for c in c_vector]
-</code></pre>
-<p>还原flag</p>
-<pre><code>n_flag=sum(coeffs[j]*(3**j)for j in range(k))
-flag_bytes = long_to_bytes(n_flag)
-</code></pre>
-<hr>
-<h2 id="misc"><a href="#misc" class="headerlink" title="misc"></a>misc</h2><h3 id="BadFile"><a href="#BadFile" class="headerlink" title="BadFile"></a>BadFile</h3><p>打开txt和wav分析需要找出的文件需要找出个人信息，pdf则在010中分析，发现加入了类似网站源码的编码，Txt和wav硬翻，pdf取了内存最大的五个</p>
-<h3 id="Meow"><a href="#Meow" class="headerlink" title="Meow"></a>Meow</h3><p>根据010打开得到的提示调整解码方式，a-zA-Z0-+&#x2F;&#x3D;，根据绿色深浅调整字符串排序在Cyberchef中解码得到</p>
-<h3 id="卢森堡的秘密"><a href="#卢森堡的秘密" class="headerlink" title="卢森堡的秘密"></a>卢森堡的秘密</h3><p>卢森堡的首字母就是lsb，简单Lsb隐写</p>
-<hr>
-<h2 id="Pwn"><a href="#Pwn" class="headerlink" title="Pwn"></a>Pwn</h2><h3 id="Ret"><a href="#Ret" class="headerlink" title="Ret"></a>Ret</h3><p>打开ida找到&#x2F;bin&#x2F;sh地址0x400794<br>backdoor函数地址：0x400676<br>找到vul函数，得到需要填充缓冲区16+rbp 8字节<br>根据提示找到ret地址0x4006b6，栈对齐<br>提交payload2 &#x3D;b’A’*offset+p64(ret)+p64(backdoor)<br>填充缓冲区+栈平衡+backdoor地址</p>
-<hr>
-<h2 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h2><h3 id="Druid"><a href="#Druid" class="headerlink" title="Druid"></a>Druid</h3><p>根据提示&#x2F;Druid<br>随便试账号和密码，admin admin过了</p>
-<h3 id="EZ-login"><a href="#EZ-login" class="headerlink" title="EZ_login"></a>EZ_login</h3><p>根据提示加X-Forward伪造本地管理员<br>然后burpsuit爆破得到密码simple</p>
-<h3 id="EZ-SQL"><a href="#EZ-SQL" class="headerlink" title="EZ_SQL"></a>EZ_SQL</h3><p>查询返回几列数据 1’ ORDER BY 3 – 成功 4 失败<br>联合查询<br>1’ UNION SELECT 1,2,3 –<br>CONVERT把第一个flag变成 flag USING utf8<br>1’ UNION SELECT 1,CONVERT(flag USING utf8), 3 FROM flag – </p>
+<p>则需要考虑ROP(Return Oriented Programming)返回导向编程<br>对于能控制RIP的指令有</p>
+<ul>
+<li>JMP</li>
+<li>pop RIP</li>
+<li>ret</li>
+<li>call &#x3D;push rip，jmp</li>
+</ul>
+<h2 id="指令集拆分"><a href="#指令集拆分" class="headerlink" title="指令集拆分"></a>指令集拆分</h2><p>对于寄存器rbp，r12，rbp对应5D，r12对应41 5D，如果返回指令时跳过41，就能将<code>pop r12</code>为<code>pop rbp</code></p>
+<h2 id="ROPgadget"><a href="#ROPgadget" class="headerlink" title="ROPgadget"></a>ROPgadget</h2><p>命令<code>ROPgadgets --binary a.out</code>和<code>ropper -f a.out</code>能找到可用的gadget</p>
+<h1 id="ret2text进阶"><a href="#ret2text进阶" class="headerlink" title="ret2text进阶"></a>ret2text进阶</h1><p>当读取长度有限时，可参考pwn学习（一）的最后，直接跳到调用函数执行call的地方，使指令简便</p>
 
     </div>
 
@@ -411,18 +346,18 @@ flag_bytes = long_to_bytes(n_flag)
     <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/CTF/" rel="tag"># CTF</a>
-              <a href="/tags/wp/" rel="tag"># wp</a>
+              <a href="/tags/pwn/" rel="tag"># pwn</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
+                <a href="/posts/cf13ee37/" rel="prev" title="随便记点">
+                  <i class="fa fa-angle-left"></i> 随便记点
+                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/posts/4a17b156/" rel="next" title="Hello World">
-                  Hello World <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
