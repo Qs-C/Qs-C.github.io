@@ -19,24 +19,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.25.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"foundation","dark":"foundation"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="记录学习日常">
-<meta property="og:type" content="website">
-<meta property="og:title" content="qsc">
-<meta property="og:url" content="http://example.com/categories/%E7%AE%97%E6%B3%95/">
+    <meta name="description" content="被冬训题stack-pivot折磨的死去活来，最后真相令人哭笑不得  stack-pivot背景">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pwn学习记录（其五）">
+<meta property="og:url" content="http://example.com/posts/45f7d273/">
 <meta property="og:site_name" content="qsc">
-<meta property="og:description" content="记录学习日常">
+<meta property="og:description" content="被冬训题stack-pivot折磨的死去活来，最后真相令人哭笑不得  stack-pivot背景">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-11-17T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-11-18T11:17:10.953Z">
 <meta property="article:author" content="qsc">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="pwn">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/categories/%E7%AE%97%E6%B3%95/">
+<link rel="canonical" href="http://example.com/posts/45f7d273/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"categories/算法/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/45f7d273/","path":"posts/45f7d273/","title":"pwn学习记录（其五）"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>分类: 算法 | qsc</title>
+<title>pwn学习记录（其五） | qsc</title>
   
 
 
@@ -143,7 +147,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -156,6 +160,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#stack-pivot"><span class="nav-number">1.</span> <span class="nav-text">stack-pivot</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">1.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%9D%A1%E4%BB%B6"><span class="nav-number">1.2.</span> <span class="nav-text">使用条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">1.3.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E8%B7%B5%EF%BC%88%E4%BB%A5%E5%86%AC%E8%AE%AD%E9%A2%98stack-pivot%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">实践（以冬训题stack-pivot为例）</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -209,70 +214,139 @@
 
     </div>
 
-    <div class="main-inner category posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
+
+
+<div class="post-block">
   
   
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h1 class="collection-header">算法
-          <small>分类</small>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/45f7d273/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/qsc.jpg">
+      <meta itemprop="name" content="qsc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qsc">
+      <meta itemprop="description" content="记录学习日常">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="pwn学习记录（其五） | qsc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          pwn学习记录（其五）
         </h1>
-      </div>
 
+        <div class="post-meta-container">
+
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2025</span>
+
+      <time title="创建时间：2025-11-18 00:00:00 / 修改时间：19:17:10" itemprop="dateCreated datePublished" datetime="2025-11-18T00:00:00+08:00">2025-11-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>309</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>被冬训题stack-pivot折磨的死去活来，最后真相令人哭笑不得</p>
+</blockquote>
+<h1 id="stack-pivot"><a href="#stack-pivot" class="headerlink" title="stack-pivot"></a>stack-pivot</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>当栈溢出的空间较小，或者开启了PIE保护，可以考虑将指针劫持到bss段进行操作</p>
+<h2 id="使用条件"><a href="#使用条件" class="headerlink" title="使用条件"></a>使用条件</h2><p>可以控制程序执行流，或者可以控制栈顶指针（一般通过<code>pop rsp/esp</code>）</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>栈迁移中的关键就是对leave,ret的利用<br>相当于</p>
+<pre><code>mov rsp，rbp
+pop rbp
+</code></pre>
+<p>连续两次的leave，ret可以将指针劫持到想要的地方<br>如果构造ROP链</p>
+<pre><code>fake_stack
+addr to leave_ret
+fake rbp
+addr to next gadget
+</code></pre>
+<p>就可以劫持栈指针，一般劫持到bss段后的位置：<strong>注意要离bss段远一点！！！</strong></p>
+<h2 id="实践（以冬训题stack-pivot为例）"><a href="#实践（以冬训题stack-pivot为例）" class="headerlink" title="实践（以冬训题stack-pivot为例）"></a>实践（以冬训题stack-pivot为例）</h2>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2025-10-31T00:00:00+08:00"
-              content="2025-10-31">
-          10-31
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/posts/34711169/" itemprop="url">
-            <span itemprop="name">二分图匹配</span>
-          </a>
-      </div>
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CTF/" rel="tag"># CTF</a>
+              <a href="/tags/pwn/" rel="tag"># pwn</a>
+          </div>
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/2a691734/" rel="prev" title="pwn学习记录（其四）">
+                  <i class="fa fa-angle-left"></i> pwn学习记录（其四）
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
+</div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2025-10-31T00:00:00+08:00"
-              content="2025-10-31">
-          10-31
-        </time>
-      </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/posts/a4f4278c/" itemprop="url">
-            <span itemprop="name">组合博弈入门</span>
-          </a>
-      </div>
 
-      
-    </header>
-  </article>
 
-    </div>
-  </div>
-  
-  
-  
+
 
 </div>
   </main>
