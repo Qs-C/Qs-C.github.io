@@ -186,7 +186,7 @@ body {
   background: var(--body-bg-color);
   box-sizing: border-box;
   color: var(--text-color);
-  font-family: Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Oxanium, Noto Sans SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 1em;
   line-height: 2;
   min-height: 100%;
@@ -199,7 +199,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Oxanium, Noto Sans SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-weight: bold;
   line-height: 1.5;
   margin: 30px 0 15px;
@@ -1042,7 +1042,7 @@ pre code {
   color: var(--brand-hover-color);
 }
 .site-title {
-  font-family: Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Oxanium, Noto Sans SC, Oxanium, Noto Sans SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 1.375em;
   font-weight: normal;
   line-height: 1.5;
@@ -1183,7 +1183,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #edffff;
+    background: #2ebeff;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -1780,7 +1780,7 @@ pre code {
   width: 4px;
 }
 .post-body {
-  font-family: Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Oxanium, Noto Sans SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   overflow-wrap: break-word;
 }
 @media (min-width: 1200px) {
@@ -1969,7 +1969,7 @@ pre code {
 }
 .posts-expand .post-meta-container {
   color: #999;
-  font-family: Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Oxanium, Noto Sans SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 0.75em;
   margin-top: 3px;
 }
@@ -2739,4 +2739,182 @@ header.header {
   .comments {
     padding: 10px 12px;
   }
+}
+/* =========================================================
+   ARKNIGHTS UI THEME OVERRIDE FOR NEXT
+   ========================================================= */
+/* ------------------ 0. 字体引入 ------------------ */
+@import url("https://fonts.loli.net/css2?family=Noto+Sans+SC:wght@400;500;700&family=Oxanium:wght@400;600;700;800&display=swap");
+/* =========================================================
+   ARKNIGHTS THEME V5.0 (REPLICA: Yue_plus Style)
+   ========================================================= */
+/* ------------------ 0. 核心变量 ------------------ */
+:root {
+  --ak-bg: #101010; /* 背景：接近纯黑 */
+  --ak-card: #1f1f1f; /* 卡片：深灰实色 */
+  --ak-blue: #23ade5; /* 罗德岛青 */
+  --ak-blue-hover: #1e90bf; /* 稍微深一点的青（用于交互） */
+  --ak-yellow: #ffcd42; /* 警告黄 */
+  --ak-white: #fff;
+  --ak-text-gray: #b2b2b2;
+}
+/* ------------------ 1. 全局背景 ------------------ */
+body {
+  background-color: var(--ak-bg);
+  color: var(--ak-text-gray);
+/* 增加暗色网格，比V2版本更隐蔽，更有质感 */
+  background-image: linear-gradient(#1a1a1a 1px, transparent 1px), linear-gradient(90deg, #1a1a1a 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-attachment: fixed;
+}
+/* ------------------ 2. 文章卡片 (核心修改) ------------------ */
+/* 强制覆盖：不透明、无阴影、加粗边框 */
+.post-block {
+  background: var(--ak-card) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  margin-top: 30px;
+  padding: 25px;
+/* 左侧边框：加粗到 6px，默认青色 */
+  border-left: 6px solid var(--ak-blue) !important;
+  transition: all 0.2s ease-in-out;
+}
+/* 悬停效果：边框变黄，卡片微微右移 */
+.post-block:hover {
+  border-left-color: var(--ak-yellow) !important;
+  background: #252525 !important; /* 稍微亮一点的灰 */
+  transform: translateX(5px);
+}
+/* 文章标题 */
+.post-title,
+.post-title-link {
+  color: var(--ak-white) !important;
+  font-weight: 700;
+  border-bottom: none !important;
+}
+.post-title-link:hover {
+  color: var(--ak-blue) !important;
+}
+/* ------------------ 3. 归档列表模仿 (模仿截图右侧列表) ------------------ */
+/* 去掉 NexT 默认的时间轴线条 */
+.posts-collapse::before {
+  background: transparent !important;
+}
+/* 每一个文章标题行 */
+.posts-collapse .post-header {
+  border-bottom: 1px solid #333; /* 极细的分隔线 */
+  margin-bottom: 0;
+  padding: 10px 15px;
+  transition: all 0.2s;
+  position: relative; /* 为了放伪元素 */
+}
+/* 年份标题 (如 2025-08) */
+.posts-collapse .collection-title {
+  border: none;
+  margin: 15px 0;
+}
+.posts-collapse .collection-header {
+  display: inline-block;
+  border-left: 4px solid var(--ak-yellow); /* 年份左边是黄条 */
+  padding-left: 10px;
+  color: var(--ak-white);
+  font-weight: bold;
+  font-size: 1.2em;
+}
+/* 文章链接行：平时状态 */
+.posts-collapse .post-title-link {
+  color: var(--ak-blue); /* 默认青色字 */
+  font-family: 'Consolas', monospace;
+}
+/* 文章日期的颜色 */
+.posts-collapse .post-meta {
+  color: #666;
+  margin-right: 10px;
+}
+/* !!! 核心模仿：悬停时整行变青色背景 !!! */
+.posts-collapse .post-header:hover {
+  background: var(--ak-blue); /* 背景变青 */
+  padding-left: 25px; /* 向右滑动 */
+}
+.posts-collapse .post-header:hover .post-title-link,
+.posts-collapse .post-header:hover .post-meta {
+  color: #000 !important; /* 文字变黑，高对比度 */
+  font-weight: bold;
+}
+/* ------------------ 4. 侧边栏/分类栏模仿 (标题条设计) ------------------ */
+/* 强制侧边栏背景 */
+.sidebar-inner,
+.sidebar {
+  background: var(--ak-card) !important;
+  box-shadow: none !important;
+}
+/* 模仿截图中 "Tags", "Categories" 的标题栏样式 */
+/* 如果你是用的 NexT 默认侧边栏，我们给它加个顶栏装饰 */
+.sidebar-inner::before {
+  content: "NAVIGATION // SYSTEM"; /* 伪装成标题 */
+  display: block;
+  background: var(--ak-white); /* 白底 */
+  color: #000; /* 黑字 */
+  padding: 5px 10px;
+  font-weight: 800;
+  font-family: 'Oxanium';
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+/* 侧边栏的统计数字 (Archives Total: 11) */
+.site-state-item-count {
+  font-size: 2em !important; /* 巨大化数字 */
+  color: var(--ak-grey) !important;
+  font-weight: 100;
+  font-family: 'Oxanium', sans-serif;
+}
+.site-state-item-name {
+  color: var(--ak-blue);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+/* 这里的 !important 是必须的，为了覆盖 NexT 的默认白底配置 */
+.header-inner,
+.sidebar-inner,
+.site-overview-wrap,
+.cc-license {
+  background: var(--ak-card) !important;
+  border-radius: 0 !important;
+  color: var(--ak-text-gray);
+}
+/* 侧边栏菜单区域修复 */
+.sidebar-inner {
+  border: 1px solid var(--ak-border);
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+/* 侧边栏菜单按钮 */
+.menu-item a {
+  background: transparent;
+  color: var(--ak-white) !important;
+  border-left: 2px solid transparent;
+}
+.menu-item a:hover {
+  border-left: 4px solid var(--ak-blue); /* 悬停左侧青条 */
+  background: rgba(35,173,229,0.1);
+}
+/* ------------------ 5. "阅读全文"按钮 (实心块风格) ------------------ */
+.btn {
+  background: transparent;
+  border: 1px solid var(--ak-blue);
+  color: var(--ak-blue) !important;
+  border-radius: 0;
+  margin-top: 20px;
+  font-family: 'Oxanium';
+  text-transform: uppercase;
+}
+.btn:hover {
+  background: var(--ak-blue) !important; /* 悬停填满 */
+  color: #000 !important; /* 黑字 */
+  border-color: var(--ak-blue);
+}
+/* ------------------ 6. 代码块修复 (纯黑终端) ------------------ */
+.highlight {
+  background: #000 !important;
+  border: 1px solid #333;
+  border-left: 4px solid var(--ak-yellow); /* 代码块左边也是黄条 */
 }

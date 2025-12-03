@@ -322,13 +322,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/posts/4a17b156/" rel="prev" title="Hello World">
-                  <i class="fa fa-angle-left"></i> Hello World
+                <a href="/posts/34711169/" rel="prev" title="二分图匹配">
+                  <i class="fa fa-angle-left"></i> 二分图匹配
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/posts/34711169/" rel="next" title="二分图匹配">
-                  二分图匹配 <i class="fa fa-angle-right"></i>
+                <a href="/posts/e04c41db/" rel="next" title="pwn学习记录（其一）">
+                  pwn学习记录（其一） <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
@@ -422,6 +422,51 @@ const darkmode = new Darkmode(options);
 window.darkmode = darkmode;
 darkmode.showWidget();
 </script>
+<!-- 罗德岛背景大水印 -->
+<div id="arknights-bg-watermark" style="
+    position: fixed;
+    bottom: -50px;
+    right: -50px;
+    font-family: 'Oxanium', sans-serif;
+    font-weight: 900;
+    font-size: 15vh;
+    color: rgba(255, 255, 255, 0.02);
+    transform: rotate(-15deg);
+    pointer-events: none;
+    z-index: -1;
+    white-space: nowrap;
+    user-select: none;
+">
+    QSC
+</div>
 
+<!-- 左下角装饰线 -->
+<div style="
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 200px;
+    height: 10px;
+    background: repeating-linear-gradient(
+      -45deg,
+      #333,
+      #333 2px,
+      transparent 2px,
+      transparent 4px
+    );
+    z-index: -1;
+    pointer-events: none;
+"></div>
+<div style="
+    position: fixed;
+    bottom: 35px;
+    left: 20px;
+    font-family: 'Oxanium';
+    font-size: 10px;
+    color: #555;
+    z-index: -1;
+">
+    SYSTEM: ONLINE // STABLE
+</div>
 </body>
 </html>
