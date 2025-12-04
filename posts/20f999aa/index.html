@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/qsc.jpg">
@@ -17,7 +18,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.25.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"foundation","dark":"foundation"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.25.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"foundation","dark":"foundation"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
     <meta name="description" content="ret2csu原理一般而言，程序中会有一个控制参数很好用的gadgets，可以劫持rbx，rbp，r12，r13，r14，r15一级rdx，rsi，edi的值，同时可以调用指定的地址。在__libc_csu_init中（函数本用于初始化rbp）">
 <meta property="og:type" content="article">
@@ -358,7 +359,76 @@
     
     
 
-    <footer class="post-footer">
+    <footer class="post-footer"><!-- 只有在文章页面 (is_post) 才加载评论，归档页不加载 -->
+
+  <div class="arknights-comments-container">
+    <!-- 这里的标题模仿罗德岛终端风格 -->
+    <div class="ak-comment-header">
+      <span class="ak-comment-title">COMMUNICATION_LOG</span>
+      <span class="ak-comment-decoration">// OPEN CHANNEL</span>
+    </div>
+
+    <!-- 粘贴 GISCUS 生成的代码 START -->
+    <script src="https://giscus.app/client.js"
+        data-repo="Qs-C/Qs-C.github.io"
+        data-repo-id="R_kgDOQKri3w"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOQKri384CzWLD"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="transparent_dark"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+    <!-- 粘贴 GISCUS 生成的代码 END -->
+  
+  </div>
+
+<script>
+(function() {
+  // === 罗德岛终端 LOG 编号计算系统 ===
+  
+  // 1. 安全获取 Hexo 变量 (加引号防止语法错误，使用 || 提供默认值)
+  // total: 博客总文章数
+  var totalStr = '11';
+  var totalPosts = parseInt(totalStr) || 0;
+
+  // current: 当前页码 (首页通常是 0 或 1，统一修正为 1)
+  var currentStr = '';
+  var currentPage = parseInt(currentStr) || 1;
+  if (currentPage === 0) currentPage = 1;
+
+  // perPage: 每页显示数量
+  var perPageStr = '10';
+  var perPage = parseInt(perPageStr) || 10;
+
+  // 2. 获取所有文章卡片
+  var postBlocks = document.querySelectorAll('.post-block');
+
+  // 3. 如果找不到卡片（可能在只有一篇的详情页），则退出
+  if (postBlocks.length === 0) return;
+
+  // 4. 循环计算编号
+  postBlocks.forEach(function(block, index) {
+    // 逻辑：总数 - ((当前页-1)*每页数) - 当前卡片序号
+    // 比如总11篇，第1页第0个：11 - 0 - 0 = 11
+    var logNum = totalPosts - ((currentPage - 1) * perPage) - index;
+
+    // 防止出现负数 (在某些归档页可能发生)
+    if (logNum < 1) logNum = 1;
+
+    // 补零 ( 5 -> 05 )
+    var formattedNum = logNum < 10 ? '0' + logNum : logNum;
+
+    // 5. 写入 DOM 属性
+    block.setAttribute('data-ak-log', 'RECORD // ' + formattedNum);
+  });
+})();
+</script>
           <div class="post-tags">
               <a href="/tags/CTF/" rel="tag"># CTF</a>
               <a href="/tags/pwn/" rel="tag"># pwn</a>
@@ -511,5 +581,68 @@ darkmode.showWidget();
 ">
     SYSTEM: ONLINE // STABLE
 </div>
+<script>
+(function() {
+  // === 罗德岛终端 LOG 编号计算系统 V2.0 ===
+  
+  // 1. 定义基础参数 (这些是 Hexo 静态生成的，不会变)
+  var TOTAL_POSTS = 11;
+  var PER_PAGE = 10 || 10;
+  
+  // 2. 核心函数：计算并注入编号
+  function updateArknightsLogs() {
+    console.log('[Arknights] Start injecting LOG numbers...');
+    
+    // 动态获取当前页码 (通过 URL 判断，兼容 PJAX 跳转)
+    // 默认第 1 页
+    var currentPage = 1; 
+    // 尝试从 URL 中匹配 /page/2/ 这种结构
+    var match = window.location.pathname.match(/\/page\/(\d+)/);
+    if (match) {
+      currentPage = parseInt(match[1]);
+    }
+    
+    console.log('[Arknights] Current Page:', currentPage, 'Total:', TOTAL_POSTS);
+
+    // 获取所有文章卡片
+    var postBlocks = document.querySelectorAll('.post-block');
+    
+    if (postBlocks.length === 0) {
+      console.log('[Arknights] No post blocks found.');
+      return;
+    }
+
+    // 循环注入
+    postBlocks.forEach(function(block, index) {
+      // 算法：总数 - ((当前页-1) * 每页数) - 当前索引
+      var logNum = TOTAL_POSTS - ((currentPage - 1) * PER_PAGE) - index;
+
+      // 修正：防止负数
+      if (logNum < 1) logNum = 1;
+
+      // 格式化：补零
+      var formattedNum = logNum < 10 ? '0' + logNum : logNum;
+      
+      // 写入属性
+      block.setAttribute('data-ak-log', 'RECORD // ' + formattedNum);
+    });
+    
+    console.log('[Arknights] Injection done. Processed ' + postBlocks.length + ' posts.');
+  }
+
+  // 3. 执行逻辑
+  // 3.1 页面初次加载时执行
+  document.addEventListener('DOMContentLoaded', updateArknightsLogs);
+  
+  // 3.2 兼容 NexT 的 PJAX 跳转 (非常重要！)
+  // 监听 pjax:success 事件，确保翻页后重新计算
+  document.addEventListener('pjax:success', updateArknightsLogs);
+
+  // 3.3 保底策略：如果 DOMContentLoaded 错过了，立即执行一次
+  // (有时 script 放在 body 底部时 DOM 已经 ready 了)
+  updateArknightsLogs();
+  
+})();
+</script>
 </body>
 </html>

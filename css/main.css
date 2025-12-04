@@ -26,6 +26,45 @@
   --highlight-gutter-foreground: #171717;
   color-scheme: light;
 }
+@media (prefers-color-scheme: dark) {
+  :root {
+    --body-bg-color: #282828;
+    --content-bg-color: #333;
+    --card-bg-color: #555;
+    --text-color: #ccc;
+    --selection-bg: #bbb;
+    --selection-color: #333;
+    --blockquote-color: #bbb;
+    --link-color: #ccc;
+    --link-hover-color: #eee;
+    --brand-color: #ddd;
+    --brand-hover-color: #ddd;
+    --table-row-odd-bg-color: #282828;
+    --table-row-hover-bg-color: #363636;
+    --menu-item-bg-color: #555;
+    --theme-color: #222;
+    --btn-default-bg: #222;
+    --btn-default-color: #ccc;
+    --btn-default-border-color: #555;
+    --btn-default-hover-bg: #666;
+    --btn-default-hover-color: #ccc;
+    --btn-default-hover-border-color: #666;
+    --highlight-background: #eee;
+    --highlight-foreground: #000;
+    --highlight-gutter-background: #d6d6d6;
+    --highlight-gutter-foreground: #171717;
+    color-scheme: dark;
+  }
+  img {
+    opacity: 0.75;
+  }
+  img:hover {
+    opacity: 0.9;
+  }
+  iframe {
+    color-scheme: light;
+  }
+}
 html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
@@ -1183,7 +1222,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #2ebeff;
+    background: #8cffff;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2306,6 +2345,52 @@ ul.breadcrumb li:last-child {
   border-bottom-color: #111;
   color: #111;
 }
+@media (prefers-color-scheme: dark) {
+  .tag-cloud-0 {
+    border-bottom-color: #555;
+    color: #555;
+  }
+  .tag-cloud-1 {
+    border-bottom-color: #646464;
+    color: #646464;
+  }
+  .tag-cloud-2 {
+    border-bottom-color: #737373;
+    color: #737373;
+  }
+  .tag-cloud-3 {
+    border-bottom-color: #828282;
+    color: #828282;
+  }
+  .tag-cloud-4 {
+    border-bottom-color: #929292;
+    color: #929292;
+  }
+  .tag-cloud-5 {
+    border-bottom-color: #a1a1a1;
+    color: #a1a1a1;
+  }
+  .tag-cloud-6 {
+    border-bottom-color: #b0b0b0;
+    color: #b0b0b0;
+  }
+  .tag-cloud-7 {
+    border-bottom-color: #c0c0c0;
+    color: #c0c0c0;
+  }
+  .tag-cloud-8 {
+    border-bottom-color: #cfcfcf;
+    color: #cfcfcf;
+  }
+  .tag-cloud-9 {
+    border-bottom-color: #dedede;
+    color: #dedede;
+  }
+  .tag-cloud-10 {
+    border-bottom-color: #eee;
+    color: #eee;
+  }
+}
 .search-active {
   overflow: hidden;
   margin-right: var(--dialog-scrollgutter, 0);
@@ -2363,6 +2448,11 @@ ul.breadcrumb li:last-child {
   border-top-right-radius: 5px;
   display: flex;
   padding: 5px;
+}
+@media (prefers-color-scheme: dark) {
+  .search-popup .search-header {
+    background: #666;
+  }
 }
 .search-popup input.search-input {
   background: transparent;
@@ -2746,175 +2836,248 @@ header.header {
 /* ------------------ 0. 字体引入 ------------------ */
 @import url("https://fonts.loli.net/css2?family=Noto+Sans+SC:wght@400;500;700&family=Oxanium:wght@400;600;700;800&display=swap");
 /* =========================================================
-   ARKNIGHTS THEME V5.0 (REPLICA: Yue_plus Style)
+   ARKNIGHTS THEME V9.0 (User Custom + Layer Enhancement)
    ========================================================= */
-/* ------------------ 0. 核心变量 ------------------ */
+/* ------------------ 0. 核心变量 (层次感调色盘) ------------------ */
+/* ====== ☀️ 白天模式 ====== */
 :root {
-  --ak-bg: #101010; /* 背景：接近纯黑 */
-  --ak-card: #1f1f1f; /* 卡片：深灰实色 */
-  --ak-blue: #23ade5; /* 罗德岛青 */
-  --ak-blue-hover: #1e90bf; /* 稍微深一点的青（用于交互） */
+  --ak-bg: #f2f2f2; /* L1: 最底层背景 (稍深灰) */
+  --ak-sidebar-bg: #fcfcfc; /* L2: 侧边栏 (几乎白) */
+  --ak-card-bg: #fff; /* L3: 文章卡片 (纯白) */
+  --ak-text-main: #222;
+  --ak-text-sec: #555;
+  --ak-border-color: #e0e0e0;
+  --ak-decorat: #ffcd42;
+  --ak-blue: #23ade5; /* 阿米娅青 */
+  --ak-blue-hover: #1e90bf;
   --ak-yellow: #ffcd42; /* 警告黄 */
-  --ak-white: #fff;
-  --ak-text-gray: #b2b2b2;
+  --ak-shadow: 0 4px 15px rgba(0,0,0,0.08); /* 白天柔和投影 */
+  --ak-border-width: 6px;
 }
-/* ------------------ 1. 全局背景 ------------------ */
+/* ====== 🌙 夜间模式 (重点修复层次感) ====== */
+/* 1. 系统设置 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ak-bg: #0a0a0a; /* L1: 背景极深 (接近纯黑) */
+    --ak-sidebar-bg: #161616; /* L2: 侧边栏 (深灰) */
+    --ak-card-bg: #202020; /* L3: 文章卡片 (提亮灰，形成对比) */
+    --ak-decorat: #23ade5;
+    --ak-text-main: #fff;
+    --ak-text-sec: #a0a0a0;
+    --ak-border-color: #333;
+    --ak-shadow: 0 10px 30px rgba(0,0,0,0.8); /* 夜间强投影，拉开层次 */
+  }
+}
+/* 2. 手动开关 */
+body.dark-mode,
+body.darkmode--activated,
+html[data-theme='dark'] {
+  --ak-bg: #0a0a0a;
+  --ak-sidebar-bg: #161616;
+  --ak-card-bg: #202020;
+  --ak-decorat: #23ade5;
+  --ak-text-main: #fff;
+  --ak-text-sec: #a0a0a0;
+  --ak-border-color: #333;
+  --ak-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+/* ------------------ 1. 全局背景与计数器初始化 ------------------ */
 body {
-  background-color: var(--ak-bg);
-  color: var(--ak-text-gray);
-/* 增加暗色网格，比V2版本更隐蔽，更有质感 */
-  background-image: linear-gradient(#1a1a1a 1px, transparent 1px), linear-gradient(90deg, #1a1a1a 1px, transparent 1px);
-  background-size: 40px 40px;
+  background-color: var(--ak-bg) !important;
+/* 增加纹理以区分纯色块 */
+  background-image: linear-gradient(var(--ak-border-color) 1px, transparent 1px), linear-gradient(90deg, var(--ak-border-color) 1px, transparent 1px);
+  background-size: 50px 50px;
   background-attachment: fixed;
+  color: var(--ak-text-sec);
+  font-family: 'Oxanium', 'Consolas', sans-serif;
+  transition: all 0.3s ease;
+/* 核心：初始化文章计数器 */
+  counter-reset: post-idx;
 }
-/* ------------------ 2. 文章卡片 (核心修改) ------------------ */
-/* 强制覆盖：不透明、无阴影、加粗边框 */
-.post-block {
-  background: var(--ak-card) !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  margin-top: 30px;
-  padding: 25px;
-/* 左侧边框：加粗到 6px，默认青色 */
-  border-left: 6px solid var(--ak-blue) !important;
-  transition: all 0.2s ease-in-out;
-}
-/* 悬停效果：边框变黄，卡片微微右移 */
-.post-block:hover {
-  border-left-color: var(--ak-yellow) !important;
-  background: #252525 !important; /* 稍微亮一点的灰 */
-  transform: translateX(5px);
-}
-/* 文章标题 */
-.post-title,
-.post-title-link {
-  color: var(--ak-white) !important;
-  font-weight: 700;
-  border-bottom: none !important;
-}
-.post-title-link:hover {
-  color: var(--ak-blue) !important;
-}
-/* ------------------ 3. 归档列表模仿 (模仿截图右侧列表) ------------------ */
-/* 去掉 NexT 默认的时间轴线条 */
-.posts-collapse::before {
-  background: transparent !important;
-}
-/* 每一个文章标题行 */
-.posts-collapse .post-header {
-  border-bottom: 1px solid #333; /* 极细的分隔线 */
-  margin-bottom: 0;
-  padding: 10px 15px;
-  transition: all 0.2s;
-  position: relative; /* 为了放伪元素 */
-}
-/* 年份标题 (如 2025-08) */
-.posts-collapse .collection-title {
-  border: none;
-  margin: 15px 0;
-}
-.posts-collapse .collection-header {
-  display: inline-block;
-  border-left: 4px solid var(--ak-yellow); /* 年份左边是黄条 */
-  padding-left: 10px;
-  color: var(--ak-white);
-  font-weight: bold;
-  font-size: 1.2em;
-}
-/* 文章链接行：平时状态 */
-.posts-collapse .post-title-link {
-  color: var(--ak-blue); /* 默认青色字 */
-  font-family: 'Consolas', monospace;
-}
-/* 文章日期的颜色 */
-.posts-collapse .post-meta {
-  color: #666;
-  margin-right: 10px;
-}
-/* !!! 核心模仿：悬停时整行变青色背景 !!! */
-.posts-collapse .post-header:hover {
-  background: var(--ak-blue); /* 背景变青 */
-  padding-left: 25px; /* 向右滑动 */
-}
-.posts-collapse .post-header:hover .post-title-link,
-.posts-collapse .post-header:hover .post-meta {
-  color: #000 !important; /* 文字变黑，高对比度 */
-  font-weight: bold;
-}
-/* ------------------ 4. 侧边栏/分类栏模仿 (标题条设计) ------------------ */
-/* 强制侧边栏背景 */
+/* ------------------ 2. 侧边栏 (层次分离) ------------------ */
+/* 侧边栏背景独立颜色 */
 .sidebar-inner,
-.sidebar {
-  background: var(--ak-card) !important;
-  box-shadow: none !important;
+.header-inner {
+  background: var(--ak-sidebar-bg) !important;
+  border: 1px solid var(--ak-border-color);
+  box-shadow: var(--ak-shadow) !important; /* 增加投影让它浮起来 */
+  border-radius: 0 !important;
 }
-/* 模仿截图中 "Tags", "Categories" 的标题栏样式 */
-/* 如果你是用的 NexT 默认侧边栏，我们给它加个顶栏装饰 */
+/* [你的代码] 菱形头像 */
+.site-author-image {
+  border: 2px solid var(--ak-blue);
+  padding: 2px;
+/* 菱形切割 */
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  background: rgba(0,0,0,0.5);
+  transition: all 0.3s;
+  border-radius: 0 !important; /* 覆盖默认圆角 */
+}
+/* [你的代码] 悬停发光 */
+.site-author-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px var(--ak-blue);
+  border-color: #fff;
+}
+/* 侧边栏装饰标题 */
 .sidebar-inner::before {
-  content: "NAVIGATION // SYSTEM"; /* 伪装成标题 */
+  content: "TERMINAL // SYSTEM";
   display: block;
-  background: var(--ak-white); /* 白底 */
-  color: #000; /* 黑字 */
+  background: var(--ak-decorat); /* 统一用青色头 */
+  color: #fff;
   padding: 5px 10px;
   font-weight: 800;
   font-family: 'Oxanium';
   letter-spacing: 1px;
   margin-bottom: 20px;
 }
-/* 侧边栏的统计数字 (Archives Total: 11) */
-.site-state-item-count {
-  font-size: 2em !important; /* 巨大化数字 */
-  color: var(--ak-grey) !important;
-  font-weight: 100;
-  font-family: 'Oxanium', sans-serif;
-}
-.site-state-item-name {
-  color: var(--ak-blue);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-/* 这里的 !important 是必须的，为了覆盖 NexT 的默认白底配置 */
-.header-inner,
-.sidebar-inner,
-.site-overview-wrap,
-.cc-license {
-  background: var(--ak-card) !important;
-  border-radius: 0 !important;
-  color: var(--ak-text-gray);
-}
-/* 侧边栏菜单区域修复 */
-.sidebar-inner {
-  border: 1px solid var(--ak-border);
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
-/* 侧边栏菜单按钮 */
-.menu-item a {
-  background: transparent;
-  color: var(--ak-white) !important;
-  border-left: 2px solid transparent;
-}
 .menu-item a:hover {
-  border-left: 4px solid var(--ak-blue); /* 悬停左侧青条 */
+  border-left: 4px solid var(--ak-blue);
   background: rgba(35,173,229,0.1);
+  color: var(--ak-blue) !important;
 }
-/* ------------------ 5. "阅读全文"按钮 (实心块风格) ------------------ */
+/* ------------------ 3. 文章卡片 (整合你的切角代码) ------------------ */
+.post-block {
+/* 计数器递增 */
+  background: var(--ak-card-bg) !important;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding: 30px;
+/* [你的代码] 形状切割：右上和左下 */
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
+/* V5风格左侧粗边框 */
+  border-left: var(--ak-border-width) solid var(--ak-blue) !important;
+/* 强阴影：这是区分背景的关键 */
+  box-shadow: var(--ak-shadow) !important;
+  border-right: 1px solid var(--ak-border-color); /* 辅助边框 */
+  border-top: 1px solid var(--ak-border-color);
+  position: relative;
+  transition: all 0.3s;
+}
+/* 悬停效果 */
+.post-block:hover {
+  border-left-color: var(--ak-yellow) !important;
+  transform: translateX(5px);
+/* 悬停时稍微提亮背景 */
+  background: linear-gradient(rgba(255,255,255,0.03), rgba(255,255,255,0.03)), var(--ak-card-bg) !important;
+}
+/* [你的代码] 标题上方的 LOG 编号 */
+/* [修改] 标题上方的 LOG 编号 */
+.post-block::before {
+/* 核心修改：不再使用 counter，而是读取 data-ak-log 属性 */
+  content: attr(data-ak-log);
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-family: 'Oxanium', monospace;
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--ak-blue);
+  letter-spacing: 1px;
+  opacity: 0.6;
+}
+/* 同时，为了防止 CSS 计数器干扰，我们可以把之前的计数器代码删掉或注释掉 */
+/* body { counter-reset: post-idx; }  <-- 这一行可以删掉 */
+/* .post-block { counter-increment: post-idx; } <-- 这一行也可以删掉 */
+/* ------------------ 4. 标题与文字 ------------------ */
+/* [你的代码] 标题样式增强 */
+.post-title {
+  text-align: left;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  padding-left: 15px;
+/* 左侧竖线 */
+  border-left: 4px solid var(--ak-blue) !important; /* 使用黄色与卡片边框区分 */
+  border-bottom: none !important;
+}
+.post-title-link {
+  color: var(--ak-text-main) !important;
+}
+.post-title-link:hover {
+  color: var(--ak-blue) !important;
+}
+/* ------------------ 5. 归档与列表适配 ------------------ */
+.posts-collapse::before {
+  background: transparent !important;
+}
+.posts-collapse .post-header {
+  border-bottom: 1px solid var(--ak-border-color);
+}
+.posts-collapse .post-header:hover {
+  background: var(--ak-blue);
+  padding-left: 20px;
+}
+.posts-collapse .post-header:hover * {
+  color: #fff !important;
+}
+/* ------------------ 6. 代码块与按钮 ------------------ */
 .btn {
   background: transparent;
   border: 1px solid var(--ak-blue);
   color: var(--ak-blue) !important;
-  border-radius: 0;
-  margin-top: 20px;
   font-family: 'Oxanium';
-  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 0;
 }
 .btn:hover {
-  background: var(--ak-blue) !important; /* 悬停填满 */
-  color: #000 !important; /* 黑字 */
-  border-color: var(--ak-blue);
+  background: var(--ak-blue) !important;
+  color: #fff !important;
 }
-/* ------------------ 6. 代码块修复 (纯黑终端) ------------------ */
+/* 代码块 */
 .highlight {
+  background: #f9f9f9;
+  border: 1px solid var(--ak-border-color);
+}
+@media (prefers-color-scheme: dark) {
+  .highlight {
+    background: #000 !important;
+    border-left: 4px solid var(--ak-yellow);
+  }
+  .highlight figcaption {
+    background: #111;
+    color: #ccc;
+  }
+}
+body.dark-mode .highlight,
+html[data-theme='dark'] .highlight {
   background: #000 !important;
-  border: 1px solid #333;
-  border-left: 4px solid var(--ak-yellow); /* 代码块左边也是黄条 */
+  border-left: 4px solid var(--ak-yellow);
+}
+body.dark-mode .highlight figcaption,
+html[data-theme='dark'] .highlight figcaption {
+  background: #111;
+  color: #ccc;
+}
+/* ------------------ 7. Giscus 评论区适配 ------------------ */
+.arknights-comments-container {
+  background: var(--ak-card-bg);
+  padding: 20px;
+  margin-top: 50px;
+  border: 1px solid var(--ak-border-color);
+  border-bottom: 4px solid var(--ak-yellow);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+}
+.ak-comment-title {
+  color: var(--ak-blue);
+}
+/* 修复 LOG 编号不显示的问题 */
+.post-block::before {
+/* 优先读取 data-ak-log，如果没有读到，显示 Loading */
+  content: attr(data-ak-log);
+  position: absolute;
+  top: 15px; /* 调整位置，防止被切角遮挡 */
+  right: 20px;
+  font-family: 'Oxanium', monospace;
+  font-size: 13px;
+  font-weight: 800;
+/* 强制使用青色，防止变量失效 */
+  color: #23ade5;
+/* 兼容变量写法 */
+  color: var(--ak-blue, #23ade5);
+  letter-spacing: 1px;
+  opacity: 0.8;
+  z-index: 10; /* 提高层级，防止被背景遮住 */
+  display: block; /* 确保显示 */
+  pointer-events: none; /* 防止遮挡点击 */
 }
