@@ -344,47 +344,7 @@
   
   </div>
 
-<script>
-(function() {
-  // === 罗德岛终端 LOG 编号计算系统 ===
-  
-  // 1. 安全获取 Hexo 变量 (加引号防止语法错误，使用 || 提供默认值)
-  // total: 博客总文章数
-  var totalStr = '11';
-  var totalPosts = parseInt(totalStr) || 0;
 
-  // current: 当前页码 (首页通常是 0 或 1，统一修正为 1)
-  var currentStr = '';
-  var currentPage = parseInt(currentStr) || 1;
-  if (currentPage === 0) currentPage = 1;
-
-  // perPage: 每页显示数量
-  var perPageStr = '10';
-  var perPage = parseInt(perPageStr) || 10;
-
-  // 2. 获取所有文章卡片
-  var postBlocks = document.querySelectorAll('.post-block');
-
-  // 3. 如果找不到卡片（可能在只有一篇的详情页），则退出
-  if (postBlocks.length === 0) return;
-
-  // 4. 循环计算编号
-  postBlocks.forEach(function(block, index) {
-    // 逻辑：总数 - ((当前页-1)*每页数) - 当前卡片序号
-    // 比如总11篇，第1页第0个：11 - 0 - 0 = 11
-    var logNum = totalPosts - ((currentPage - 1) * perPage) - index;
-
-    // 防止出现负数 (在某些归档页可能发生)
-    if (logNum < 1) logNum = 1;
-
-    // 补零 ( 5 -> 05 )
-    var formattedNum = logNum < 10 ? '0' + logNum : logNum;
-
-    // 5. 写入 DOM 属性
-    block.setAttribute('data-ak-log', 'RECORD // ' + formattedNum);
-  });
-})();
-</script>
           <div class="post-tags">
               <a href="/tags/%E6%9D%82%E8%B0%88/" rel="tag"># 杂谈</a>
               <a href="/tags/%E6%97%A5%E8%AE%B0/" rel="tag"># 日记</a>
